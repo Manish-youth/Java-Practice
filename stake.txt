@@ -1,0 +1,82 @@
+
+struct Astake
+{
+int top;
+int capacity;
+int *array ;
+};
+struct Astake CreateStake(int capacity)
+{
+struct Astake *stake;
+stake = malloc(sizeof(struct Astake));
+stake->capacity=capacity;
+stake->top=-1;
+stake->array=malloc(sizeof(int)*stake->capacity);
+return(stake);
+}
+int isFull(struct Astake *stake)
+{
+if (stake->top==stake->capacity -1)
+return(1);
+else
+return(0);
+}
+int isEmpty(struct Astake *stake)
+{
+ if(stake->top = -1)
+ return(1);
+ else
+ return(0);
+}
+void push(struct Astake *stake, int item)
+{
+if (!isFull(stake))
+{
+stake->top++;
+stake->array[stake->top]=item;
+}
+}
+void pop(struct Astake *stake)
+int item;
+if(!isEmpty(stake))
+{
+  item= stake->array[stake->top];
+  stake->top --;
+  return (item);
+  }
+  return(-1);
+  }
+
+  main()
+  {
+  int choice , item;
+  struct Astake *stake;
+  stake = creatStake(4);
+  while(1)
+  {
+  clrscr();
+  printf("\n 1. PUSH);
+  printf("\n 2. POP);
+  printf("\n 3. EXIT);
+  printf("Enter your choice");
+  scsnf("%d", &choice);
+  switch(choice)
+  {
+  case 1:
+  printf("\n Enter a number");
+  scanf("%d", &item);
+  push(stake, item);
+  break;
+  case 2:
+  item = pop(stake);
+  if(item==-1)
+  printf("Stake is empty");
+  else
+  printf("popped value is %d" , item);
+  case 3:
+  exit(0);
+  }
+  getch();
+  }
+
+
